@@ -73,6 +73,9 @@ app.configure('production', function() {
     });
 });
 
+/* Activate Routes */
+require("./routes");
+
 /* Start Router */
 app.use(app.router);
 app.listen(80);
