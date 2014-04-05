@@ -1,3 +1,7 @@
+/*
+    NOTE: open source - copied theme from developer toolbar community
+*/
+
 /* make standalone page show express-debug by default and disable show/hide buttons */
 .express-debug.standalone #EDT #EDT-close { display: none; }
 .express-debug.standalone #EDT-show { display: none; }
