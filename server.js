@@ -13,7 +13,7 @@ GLOBAL.config  = require("./config");
 GLOBAL.lib     = require("./lib");
 
 /* Initialize Lib */
-lib.init();
+lib.init(ejs);
 
 /* Express: Configuration */
 app.configure(function() {
