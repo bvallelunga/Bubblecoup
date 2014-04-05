@@ -43,6 +43,10 @@
         "production": "",
         "development": ""
     },
+    "flickr": {
+        "key": "7f29423ab7d33be6e65fa7df8a706576",
+        "secret": "a8ed660b9801e7a3"
+    }
     "icons": {
 
     },

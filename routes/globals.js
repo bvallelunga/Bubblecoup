@@ -20,6 +20,7 @@ module.exports = function(req, res, next) {
     req.robot = (device == "bot");
     req.tv = (device == "tv");
 
+    //Session Save
     req.session.save();
 
     //Locals
