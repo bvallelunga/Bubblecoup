@@ -1,3 +1,4 @@
+//Import NPM Modules
 var $ = require("jquery");
 var fs = require('node-fs');
 var config = require('./config');
@@ -6,7 +7,7 @@ var forever = require('forever-monitor');
 //Create Logs Folder
 fs.mkdirSync(__dirname + '/../logs/' + config.forever.uid, 0775, true);
 
-//Configure Forever
+//Configure Forever (Daemon & File Watcher)
 var child = new (forever.Monitor)(__dirname + '/server.js', {
     uid: config.forever.uid,
     max: config.forever.max_failures,
@@ -31,11 +32,13 @@ var child = new (forever.Monitor)(__dirname + '/server.js', {
     killTree: true
 });
 
+//Log on Exit
 child.on('exit', function () {
 	console.log("server.js fully down after " + config.forever.max_failures + " starts.");
 	console.log("SERVER DOWN.");
 });
 
+//Log Exit Code
 child.on('exit:code', function(code) {
 	console.log("server.js exited with code " + code);
 });
