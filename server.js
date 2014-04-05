@@ -3,7 +3,6 @@ var express    = require("express");
 var device     = require("express-device");
 var slashes    = require("connect-slashes");
 var app        = express();
-var piler      = require("piler");
 var ejs        = require("ejs");
 var RedisStore = require("connect-redis")(express);
 
@@ -12,15 +11,12 @@ GLOBAL.$              = require("jquery");
 GLOBAL.async          = require("async");
 GLOBAL.config         = require("./config");
 GLOBAL.lib            = require("./lib");
-GLOBAL.clientJS       = piler.createJSManager({ urlRoot: "/js/" });
-GLOBAL.clientCSS      = piler.createCSSManager({ urlRoot: "/css/" });
 
 /* Express: Configuration */
 app.configure(function() {
     //Assests
-    clientJS.bind(app);
-    clientCSS.bind(app);
-    require("./public")(__dirname);
+    require("./public").init(app);
+    app.use(require("./public").express);
 
     //HTML Engine
     app.engine("html", ejs.renderFile);
