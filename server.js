@@ -51,6 +51,9 @@ app.configure(function() {
         })
     }));
 
+    //Init Models
+    app.use(lib.models);
+
     //Setup Globals
     app.use(require("./routes/globals"));
 });
