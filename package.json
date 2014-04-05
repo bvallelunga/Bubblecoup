@@ -27,7 +27,6 @@
     "jquery": "1.8.3",
     "stripe": "2.1.0-rc3",
     "jquery.payment": "0.0.1",
-    "sitemap": "0.7.1",
     "geoip-lite": "1.1.1",
     "moment-range": "1.0.1",
     "sprintf-js": "0.0.7",

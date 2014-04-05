@@ -5,13 +5,13 @@ var slashes    = require("connect-slashes");
 var app        = express();
 var piler      = require("piler");
 var ejs        = require("ejs");
-var redis      = require("redis");
 var RedisStore = require("connect-redis")(express);
 
 /* IMPORTANT - Global Variables */
 GLOBAL.$              = require("jquery");
 GLOBAL.async          = require("async");
 GLOBAL.config         = require("./config");
+GLOBAL.lib            = require("./lib");
 GLOBAL.clientJS       = piler.createJSManager({ urlRoot: "/js/" });
 GLOBAL.clientCSS      = piler.createCSSManager({ urlRoot: "/css/" });
 
@@ -51,7 +51,7 @@ app.configure(function() {
         key: config.cookies.session.key,
         secret: config.cookies.session.secret,
         store: new RedisStore({
-            client: redis.createClient()
+            client: lib.redis
         })
     }));
 });
