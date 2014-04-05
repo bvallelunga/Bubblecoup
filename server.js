@@ -12,6 +12,9 @@ GLOBAL.async   = require("async");
 GLOBAL.config  = require("./config");
 GLOBAL.lib     = require("./lib");
 
+/* Initialize Lib */
+lib.init();
+
 /* Express: Configuration */
 app.configure(function() {
     //HTML Engine
@@ -51,7 +54,7 @@ app.configure(function() {
         })
     }));
 
-    //Init Models
+    //Initialize Models
     app.use(lib.models);
 
     //Setup Globals
