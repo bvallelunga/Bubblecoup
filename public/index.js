@@ -12,9 +12,11 @@ var js = piler.createJSManager({ urlRoot: "/js/" });
 var css = piler.createCSSManager({ urlRoot: "/css/" });
 
 exports.init = function(app) {
+    //Bind to App
     js.bind(app);
     css.bind(app);
 
+    //Auto Discover JS
     $.each(fs.readdirSync(__dirname + "/js/"), function(index, directory) {
         var path = __dirname + "/js/" + directory;
 
@@ -29,10 +31,11 @@ exports.init = function(app) {
         }
     });
 
+    //Auto Discover CSS
     $.each(fs.readdirSync(__dirname + "/less/"), function(index, directory) {
         var path = __dirname + "/less/" + directory;
 
-        if(fs.statSync(path).isDirectory()) {
+        if(fs.statSync(path).isDirectory() && directory !== "compless") {
             $.each(fs.readdirSync(path), function(index, file) {
                 if(directory === "core") {
                     css.addFile(path + "/" + file);

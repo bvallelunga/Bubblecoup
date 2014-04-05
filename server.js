@@ -7,17 +7,13 @@ var ejs        = require("ejs");
 var RedisStore = require("connect-redis")(express);
 
 /* IMPORTANT - Global Variables */
-GLOBAL.$              = require("jquery");
-GLOBAL.async          = require("async");
-GLOBAL.config         = require("./config");
-GLOBAL.lib            = require("./lib");
+GLOBAL.$       = require("jquery");
+GLOBAL.async   = require("async");
+GLOBAL.config  = require("./config");
+GLOBAL.lib     = require("./lib");
 
 /* Express: Configuration */
 app.configure(function() {
-    //Assests
-    require("./public").init(app);
-    app.use(require("./public").express);
-
     //HTML Engine
     app.engine("html", ejs.renderFile);
 
@@ -27,6 +23,10 @@ app.configure(function() {
     app.set("view options", { layout: true });
     app.set("view cache", true);
     app.set("x-powered-by", false);
+
+    //Piler Assests
+    require("./public").init(app);
+    app.use(require("./public").express);
 
     //Direct Assests
     app.use("/favicons", express.static(__dirname + "/public/favicons"));
@@ -57,6 +57,7 @@ app.configure(function() {
 
 /* Development Only */
 app.configure('development', function() {
+    //Debug Toolbar
     require('express-debug')(app, {
         theme: __dirname + config.development.debugger.theme,
         panels: config.development.debugger.panels
@@ -65,7 +66,7 @@ app.configure('development', function() {
 
 /* Production Only */
 app.configure('production', function() {
-    /* Last Resort Error Handling */
+    //Last Resort Error Handling
     process.on('uncaughtException', function(exception) {
         console.error(exception);
         return false;

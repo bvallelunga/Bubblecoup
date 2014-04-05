@@ -34,7 +34,8 @@
     "node-fs": "0.1.7"
   },
   "devDependencies": {
-    "express-debug": "*"
+    "express-debug": "*",
+    "socket.io": "0.9.16"
   },
   "repository": {
     "type": "git",
