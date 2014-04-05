@@ -39,7 +39,10 @@
         "user": "root",
         "password": "bubblecoup"
     },
-    "stripe": "",
+    "stripe": {
+        "production": "",
+        "development": ""
+    },
     "icons": {
 
     },
