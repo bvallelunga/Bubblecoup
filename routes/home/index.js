@@ -1,5 +1,5 @@
 exports.index = function(req, res, next) {
-    res.render("/home/index", {
+    res.render("home/index", {
         title: "Power of Being Social",
         title_first: false,
         user: req.session.user,
