@@ -1,0 +1,62 @@
+{
+    "general": {
+        "production": false,
+        "company": "BubbleCoup",
+        "logo": "bubblecoup",
+        "delimeter": {
+            "web": " · ",
+            "email": " - "
+        }
+    },
+    "development": {
+        "debugger": {
+            "theme": "/lib/debugger/edt.css",
+            "panels": [
+                "locals",
+                "request",
+                "session"
+            ]
+        }
+    }
+    "cookies": {
+        "rememberme": "usrr",
+        "session": {
+            "key": "usrs",
+            "secret": "8ucsTLrvSyaKOCpP4oB6kVlqCOU31qt7ZhoX3EqzDymCTX2SqB"
+        }
+    },
+    "orm": {
+        "reset": true,
+        "preload": false,
+        "sync": true,
+        "debug": false,
+        "protocol": "mysql:",
+        "host": "127.0.0.1",
+        "database": "bubblecoup",
+        "user": "root",
+        "password": "bubblecoup"
+    },
+    "stripe": "",
+    "icons": {
+        "search": "icon-search-2"
+    },
+    "forever": {
+        "uid": "bubblecoup",
+        "silent": false,
+        "watch": true,
+        "watch_directory": "./",
+        "watch_ignore_dot": true,
+        "watch_ignore_patterns": [
+            "config.tmp.json",
+            "node_modules/**",
+            "public/less/**",
+            "public/js/**",
+            "**.log",
+            ".*/**",
+            ".*"
+        ],
+        "max_failures": 1000,
+        "output_log": "../logs/bubblecoup/log.out",
+        "error_log": "../logs/bubblecoup/log.error"
+    }
+}
