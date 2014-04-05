@@ -6,7 +6,10 @@
         "delimeter": {
             "web": " · ",
             "email": " - "
-        }
+        },
+        "description": [
+            "Offering a more efficient and fair resource for consumers and local businesses alike."
+        ]
     },
     "development": {
         "debugger": {

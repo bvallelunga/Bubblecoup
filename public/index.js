@@ -20,7 +20,11 @@ exports.init = function(app) {
 
         if(fs.statSync(path).isDirectory()) {
             $.each(fs.readdirSync(path), function(index, file) {
-                js.addFile(directory, path + "/" + file);
+                if(directory === "core") {
+                    js.addFile(path + "/" + file);
+                } else {
+                    js.addFile(directory, path + "/" + file);
+                }
             });
         }
     });
@@ -30,7 +34,11 @@ exports.init = function(app) {
 
         if(fs.statSync(path).isDirectory()) {
             $.each(fs.readdirSync(path), function(index, file) {
-                css.addFile(directory, path + "/" + file);
+                if(directory === "core") {
+                    css.addFile(path + "/" + file);
+                } else {
+                    css.addFile(directory, path + "/" + file);
+                }
             });
         }
     });

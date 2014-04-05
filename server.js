@@ -33,6 +33,9 @@ app.configure(function() {
     app.use("/fonts", express.static(__dirname + "/public/fonts"));
     app.use("/img", express.static(__dirname + "/public/images"));
 
+    //Setup Globals
+    app.use(require("./routes/globals"));
+
     //External Addons
     app.use(slashes(true));
     app.use(device.capture());
