@@ -1,7 +1,34 @@
 <% include ../includes/start.html %>
 <% include ../includes/header.html %>
 <div class="container">
-
+    <div class="info">
+        <div class="title"><%= bubble.name %></div>
+        <div class="subtitle">
+            <%= bubble.company.name %>
+            <strong><%= site_delimeter %></strong>
+            <%=: bubble.company.city | capitalize %>, <%=: bubble.company.state | capitalize %>
+        </div>
+        <div class="description"><%=: bubble.description %></div>
+        <div class="image">
+            <img src="/img/food/<%=: bubble.pub_id %>_big.png"/>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="map">
+            <img class="map" src="http://maps.google.com/maps/api/staticmap?center=<%= bubble.company.location%>&markers=<%= bubble.company.location%>&size=250x130&sensor=true&zoom=15&scale=2&maptype=roadmap&visual_refresh=true"/>
+        </div>
+        <div class="purchase">
+            <div class="discounted">
+                <strong>$<%= bubble.original - (bubble.original * (bubble.discount/100)) %></strong>
+            </div>
+            <div class="original">Original Price: <span>$<%= bubble.original %></span></div>
+            <a class="buy" href="/bubbles/<%= bubble.pub_id %>/purchase/">Buy Now!</a>
+            <div class="discount"><strong><%= bubble.discount %>%</strong> off</div>
+        </div>
+        <div class="contact">
+            call us at <a href="tel:3108492533">310-849-2533</a>
+        </div>
+    </div>
 </div>
 <% include ../includes/footer.html %>
 <% include ../includes/end.html %>

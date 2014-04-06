@@ -7,8 +7,8 @@ exports.index = function(req, res, next) {
                 title: bubble.name,
                 bubble: bubble,
                 user: req.session.user,
-                js: req.js.renderTags("search"),
-                css: req.css.renderTags("search")
+                js: req.js.renderTags("bubbles"),
+                css: req.css.renderTags("bubbles")
             });
         } else {
             res.redirect("/");
