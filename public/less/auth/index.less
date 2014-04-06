@@ -1,7 +1,7 @@
 @import '../compless/all';
 
 .forms {
-    height: 350px;
+    height: 380px;
 
     .separator {
         width: 1px;
@@ -15,14 +15,14 @@
         width: 225px;
         margin: 30px 0;
         background: darken(#fff, 3%);
-        padding: 20px;
+        padding: 20px 20px 0 20px;
         overflow: hidden;
         .border-radius(4px);
         .float-left();
 
         .header {
             text-align: center;
-            padding: 5px 0;
+            padding: 8px 0;
             margin: -20px -20px 20px -20px;
             background: #156F96;
             color: #fff;
@@ -40,11 +40,18 @@
             .border-radius(3px);
         }
 
+        .separator {
+            width: 100%;
+            background: darken(#fff, 8%);
+            margin: 10px -30px 0 -30px;
+            padding: 10px 30px;
+        }
+
         .button {
             width: 100%;
             color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 8px 0;
             font-size: 16px;
             cursor: pointer;
             .border-radius(2px);
@@ -67,6 +74,24 @@
                     &:active {
                         .linear-gradient(0deg, darken(#F3544C, 10%), darken(#F3544C, 15%));
                     }
+                }
+            }
+
+            &.facebook {
+                .linear-gradient(0deg, darken(#9B59B6, 5%), #9B59B6);
+
+                &:hover {
+                    .linear-gradient(0deg, darken(#9B59B6, 10%), #9B59B6);
+
+                    &:active {
+                        .linear-gradient(0deg, darken(#9B59B6, 10%), darken(#9B59B6, 15%));
+                    }
+                }
+
+                span {
+                    font-size: 13px;
+                    margin-right: 5px;
+
                 }
             }
         }
