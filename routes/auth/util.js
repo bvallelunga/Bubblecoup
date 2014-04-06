@@ -8,7 +8,7 @@ exports.restrictAccess = function(req, res, next) {
                 if(!error && user) {
                     user.set_recovery(req, res);
                 } else {
-                    res.redirect("/login");
+                    res.redirect("/login?next=" + req.url);
                 }
             });
         }
@@ -23,11 +23,11 @@ exports.restrictAccess = function(req, res, next) {
                     req.session.save();
                     res.redirect(req.param("next") || config.general.default);
                 } else {
-                    res.redirect("/login");
+                    res.redirect("/login?next=" + req.url);
                 }
             });
         } else {
-            res.redirect("/login");
+            res.redirect("/login?next=" + req.url);
         }
     }
 };
@@ -43,7 +43,7 @@ exports.xhr = function(req, res, next) {
 /* Operations */
 exports.login = function(req, res, next) {
     req.models.users.one({
-        email: $.trim(req.param('name')),
+        email: $.trim(req.param('email')),
         password: req.models.users.hash($.trim(req.param('password')))
     }, function(error, user) {
         if(!error && user) {
@@ -56,7 +56,7 @@ exports.login = function(req, res, next) {
             });
         } else {
             res.json({
-                sucess: false,
+                success: false,
                 error_message: "Invalid Credentials"
             });
         }
@@ -98,7 +98,7 @@ exports.register = function(req, res, next) {
 
                 } else {
                     res.json({
-                        sucess: false,
+                        success: false,
                         error_message: "Failed to Register"
                     });
                 }

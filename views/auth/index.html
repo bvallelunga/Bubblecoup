@@ -1,0 +1,24 @@
+<% include ../includes/start.html %>
+<% include ../includes/header.html %>
+<div class="forms">
+    <div class="form">
+        <div class="header">Sign Up</div>
+        <form action="/register/" autocomplete="off">
+            <input class="input" type="text" name="name"  placeholder="John Doe" required="required"/>
+            <input class="input" type="text" name="email"  placeholder="john@doe.com" required="required"/>
+            <input class="input" type="password" name="password" placeholder="password" required="required"/>
+            <input class="button" type="submit" value="Register"/>
+        </form>
+    </div>
+    <div class="separator"></div>
+    <div class="form">
+        <div class="header">Sign In</div>
+        <form action="/login/" autocomplete="off">
+            <input class="input" type="text" name="email" placeholder="john@doe.com" required="required"/>
+            <input class="input" type="password"name="password" placeholder="password" required="required"/>
+            <input class="button" type="submit" value="Login"/>
+        </form>
+    </div>
+</div>
+<% include ../includes/footer.html %>
+<% include ../includes/end.html %>

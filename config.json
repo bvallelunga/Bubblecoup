@@ -10,7 +10,8 @@
         "description": [
             "Offering a more efficient and fair resource for consumers and local businesses alike."
         ],
-        "backdrop": "oceans"
+        "backdrop": "oceans",
+        "default": "/"
     },
     "development": {
         "debugger": {

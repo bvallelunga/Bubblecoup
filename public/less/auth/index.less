@@ -1,0 +1,74 @@
+@import '../compless/all';
+
+.forms {
+    height: 350px;
+
+    .separator {
+        width: 1px;
+        height: 100%;
+        margin: 0 60px;
+        background: darken(#fff, 8%);
+        .float-left();
+    }
+
+    .form {
+        width: 225px;
+        margin: 30px 0;
+        background: darken(#fff, 3%);
+        padding: 20px;
+        overflow: hidden;
+        .border-radius(4px);
+        .float-left();
+
+        .header {
+            text-align: center;
+            padding: 5px 0;
+            margin: -20px -20px 20px -20px;
+            background: #156F96;
+            color: #fff;
+            text-shadow: 0 -1px 0 darken(#156F96, 5%);
+        }
+
+        .input {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            border: solid 1px darken(#fff, 5%);
+            .border-radius(3px);
+        }
+
+        .button {
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            .border-radius(2px);
+            .linear-gradient(0deg, darken(#36B1F3, 5%), #36B1F3);
+
+            &:hover {
+                .linear-gradient(0deg, darken(#36B1F3, 10%), #36B1F3);
+
+                &:active {
+                    .linear-gradient(0deg, darken(#36B1F3, 10%), darken(#36B1F3, 15%));
+                }
+            }
+
+            &.error {
+                .linear-gradient(0deg, darken(#F3544C, 5%), #F3544C);
+
+                &:hover {
+                    .linear-gradient(0deg, darken(#F3544C, 10%), #F3544C);
+
+                    &:active {
+                        .linear-gradient(0deg, darken(#F3544C, 10%), darken(#F3544C, 15%));
+                    }
+                }
+            }
+        }
+    }
+}
