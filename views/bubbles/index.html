@@ -19,7 +19,7 @@
         </div>
         <div class="purchase">
             <div class="discounted">
-                <strong>$<%= bubble.original - (bubble.original * (bubble.discount/100)) %></strong>
+                <strong>$<%= (bubble.original - (bubble.original * (bubble.discount/100))).toFixed(2) %></strong>
             </div>
             <div class="original">Original Price: <span>$<%= bubble.original %></span></div>
             <a class="buy" href="/bubbles/<%= bubble.pub_id %>/purchase/">Buy Now!</a>
