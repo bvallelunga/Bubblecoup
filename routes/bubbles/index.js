@@ -17,18 +17,35 @@ exports.index = function(req, res, next) {
 }
 
 exports.purchase = function(req, res, next) {
-    req.models.bubbles.one({
-        pub_id: req.param("bubble")
-    },  function(error, bubble) {
-        if(!error && bubble) {
-            res.render("bubbles/purchase", {
-                title: bubble.name,
-                bubble: bubble,
-                parent: req.param("parent") || "",
-                user: req.session.user,
-                js: req.js.renderTags("bubbles"),
-                css: req.css.renderTags("bubbles")
-            });
+    async.parallel({
+        bubble: function(callback) {
+            req.models.bubbles.one({
+                pub_id: req.param("bubble")
+            }, callback);
+        },
+        shared: function(callback) {
+            if(req.param("shared")) {
+                req.models.bubbles.purchases.one({
+                    pub_id: req.param("shared")
+                }, callback);
+            } else {
+                callback();
+            }
+        }
+    }, function(error, data) {
+        if(!error && data) {
+            if(!req.param("shared") || (data.shared && !data.shared)) {
+                res.render("bubbles/purchase", {
+                    title: data.bubble.name,
+                    bubble: data.bubble,
+                    shared: req.param("shared") || "",
+                    user: req.session.user,
+                    js: req.js.renderTags("bubbles"),
+                    css: req.css.renderTags("bubbles")
+                });
+            } else {
+                res.redirect("/");
+            }
         } else {
             res.redirect("/");
         }

@@ -44,10 +44,10 @@ exports.purchase = function(req, res, next) {
                             pub_id: req.param("bubble")
                         }, callback);
                     },
-                    parent: function(callback) {
-                        if(req.param("parent")) {
-                            req.models.bubbles.one({
-                                pub_id: req.param("parent")
+                    shared: function(callback) {
+                        if(req.param("shared")) {
+                            req.models.bubbles.purchases.one({
+                                pub_id: req.param("shared")
                             }, callback);
                         } else {
                             callback();
@@ -58,7 +58,7 @@ exports.purchase = function(req, res, next) {
                         req.models.bubbles.purchases.create({
                              owner_id: user.id,
                              bubble_id: data.bubble.id,
-                             parent_id: (data.parent) ? data.parent.id : null
+                             shared_id: (data.shared) ? data.shared.id : null
 
                         }, function(error, purchase) {
                             if(!error && purchase) {

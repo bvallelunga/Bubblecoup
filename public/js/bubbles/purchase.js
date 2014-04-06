@@ -18,7 +18,7 @@ $(function() {
             }
         });
 
-   $("form").submit(function(e) {
+   $(".confirm form").submit(function(e) {
         e.preventDefault();
         e.stopPropagation();
 
