@@ -45,9 +45,9 @@ exports.purchase = function(req, res, next) {
                         }, callback);
                     },
                     shared: function(callback) {
-                        if(req.param("shared")) {
+                        if(req.param("parent")) {
                             req.models.bubbles.purchases.one({
-                                pub_id: req.param("shared")
+                                pub_id: req.param("parent")
                             }, callback);
                         } else {
                             callback();

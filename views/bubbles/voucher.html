@@ -1,23 +1,30 @@
 <% include ../includes/start.html %>
-<div class="voucher">
-    <div class="header">
-        <img src="/img/logo.png">
-        <span>bubblecoup</span>
-    </div>
-    <div class="info">
-        <div class="instructions">
-            Please give this voucher to <strong><%= voucher.bubble.company.name %></strong>
-            when entering the restaurant.
-            <br><br>
-            <strong>Address</strong><br>
-            <%= voucher.bubble.company.name %><br>
-            <%=: voucher.bubble.company.location | capitalize %>
+<div class="center-window">
+    <div class="voucher">
+        <div class="header">
+            <img src="/img/logo.png">
+            <span>bubblecoup</span>
         </div>
-        <img src="http://www.barcodelink.net/barcode.php?url=<%= host + "/redeem/%s/%s/%s/".sprintf([
-            voucher.pub_id,
-            voucher.bubble.company.pub_id,
-            user.pub_id
-        ]) %>&size=600"
+        <div class="info">
+            <div class="instructions">
+                Please give this voucher to <strong><%= voucher.bubble.company.name %></strong>
+                when entering the restaurant.
+                <br><br>
+                <strong>Address</strong><br>
+                <%= voucher.bubble.company.name %><br>
+                <%=: voucher.bubble.company.location | capitalize %>
+            </div>
+            <img src="http://www.barcodelink.net/barcode.php?url=<%= host + "/redeem/%s/%s/%s/".sprintf([
+                voucher.pub_id,
+                voucher.bubble.company.pub_id,
+                user.pub_id
+            ]) %>&size=600"/>
+        </div>
+    </div>
+    <% var share = host + "/bubbles/%s/purchase/%s/".sprintf([voucher.bubble.pub_id, voucher.pub_id]); %>
+    <div class="message" data-url="<%= share %>">
+        <div>share this bubble with a friend for an additional 5% discount</div>
+        <a target="_blank" href="<%= share %>"><%=: share | link:(40) %></a>
     </div>
 </div>
 <% include ../includes/end.html %>

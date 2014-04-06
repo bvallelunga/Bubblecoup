@@ -4,6 +4,7 @@
     width: 400px;
     border: dashed 3px #000;
     padding: 3px;
+    margin: 0 auto 30px auto;
     .border-radius(3px);
 
     .header {
@@ -20,6 +21,7 @@
     }
 
     .info {
+        background: #fff;
         .clearfix();
 
         .instructions {
@@ -32,6 +34,29 @@
             width: 200px;
             height: 200px;
             .float-right();
+        }
+    }
+}
+
+.message {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: #1880AC;
+
+        &:hover {
+            text-decoration: underline;
+
+            &:active {
+                color: darken(#1880AC, 10%);
+            }
         }
     }
 }

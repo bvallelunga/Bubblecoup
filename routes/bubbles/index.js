@@ -23,10 +23,10 @@ exports.purchase = function(req, res, next) {
                 pub_id: req.param("bubble")
             }, callback);
         },
-        shared: function(callback) {
-            if(req.param("shared")) {
+        parent: function(callback) {
+            if(req.param("parent")) {
                 req.models.bubbles.purchases.one({
-                    pub_id: req.param("shared")
+                    pub_id: req.param("parent")
                 }, callback);
             } else {
                 callback();
@@ -34,7 +34,7 @@ exports.purchase = function(req, res, next) {
         }
     }, function(error, data) {
         if(!error && data) {
-            if(!req.param("shared") || (data.shared && !data.shared)) {
+            if(!req.param("parent") || (data.parent && !data.parent.shared)) {
                 res.render("bubbles/purchase", {
                     title: data.bubble.name,
                     bubble: data.bubble,

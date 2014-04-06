@@ -1,3 +1,3 @@
 $(function() {
-    $(".voucher").vAlign().hAlign();
+    $(".center-window").vAlign().hAlign();
 });
