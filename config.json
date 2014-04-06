@@ -41,8 +41,8 @@
         "password": "bubblecoup"
     },
     "stripe": {
-        "production": "",
-        "development": ""
+        "production": "sk_live_EzlWg4LFouolfg7RGNj0dHaI",
+        "development": "sk_test_YPp6Iew2IQkSOOP1CXRIg741"
     },
     "icons": {
         "search": "icon-search-2"
