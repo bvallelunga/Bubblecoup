@@ -34,7 +34,11 @@ exports.purchase = function(req, res, next) {
         }
     }, function(error, data) {
         if(!error && data) {
-            if(!req.param("parent") || (data.parent && !data.parent.shared)) {
+            if(!req.param("parent") || (data.parent && data.parent.owner_id != req.session.user.id && !data.parent.shared)) {
+                if(data.parent) {
+                    data.bubble.discount += 5;
+                }
+
                 res.render("bubbles/purchase", {
                     title: data.bubble.name,
                     bubble: data.bubble,
@@ -65,46 +69,6 @@ exports.voucher = function(req, res, next) {
             });
         } else {
             res.redirect("/");
-        }
-    });
-}
-
-exports.redeem = function(req, res, next) {
-    async.parallel({
-        user: function(callback) {
-            req.models.users.one({
-                pub_id: req.param("user")
-            }, callback);
-        },
-        voucher: function(callback) {
-            req.models.bubbles.purchases.one({
-                pub_id: req.param("voucher")
-            }, callback);
-        },
-        company: function(callback) {
-            req.models.companies.exists({
-                pub_id: req.param("company")
-            }, callback);
-        }
-    }, function(error, data) {
-        if(!error && data.user && data.company && data.voucher && !data.voucher.used) {
-            data.voucher.save({
-                used: true
-            }, function(error) {
-                if(!error) {
-                    res.json({ success: true });
-                } else {
-                    res.json({
-                        success: false,
-                        error_message: "Failed to Redeem Voucher"
-                    });
-                }
-            });
-        } else {
-            res.json({
-                success: false,
-                error_message: "Failed to Redeem Voucher"
-            });
         }
     });
 }
