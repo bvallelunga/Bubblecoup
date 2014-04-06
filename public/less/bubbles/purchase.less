@@ -52,6 +52,33 @@
         padding: 10px;
     }
 
+    .card {
+        font-size: 14px;
+        .clearfix();
+
+        .logo {
+            width: 35px;
+            margin-top: 5px;
+            .float-left();
+        }
+
+        .name {
+            width: 170px;
+            margin: 8px 0 0 10px;
+            .float-left();
+            .ellipsis();
+        }
+
+        .number {
+            margin: 2px 0 0 10px;
+            color: #fff;
+            background: #1880AC;
+            padding: 5px 8px;
+            .float-right();
+            .border-radius(3px);
+        }
+    }
+
     .new-card {
         padding-bottom: 0;
         .clearfix();
@@ -115,6 +142,18 @@
 
                 &:active {
                     .linear-gradient(0deg, darken(#36B1F3, 13%), darken(#36B1F3, 15%));
+                }
+            }
+
+            &.error {
+                .linear-gradient(0deg, darken(#F3544C, 5%), #F3544C);
+
+                &:hover {
+                    .linear-gradient(0deg, darken(#F3544C, 10%), #F3544C);
+
+                    &:active {
+                        .linear-gradient(0deg, darken(#F3544C, 10%), darken(#F3544C, 15%));
+                    }
                 }
             }
         }

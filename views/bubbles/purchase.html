@@ -1,7 +1,7 @@
 <% include ../includes/start.html %>
 <% include ../includes/header.html %>
 <div class="confirm">
-    <form action="/bubbles/<%= bubble.pub_id %>/purchase/">
+    <form action="/bubbles/<%= bubble.pub_id %>/purchase/<%= parent %>">
         <div class="image">
             <img src="/img/food/<%= bubble.pub_id %>.png"/>
             <div class="darkerner"></div>
@@ -21,7 +21,7 @@
             <div class="card">
                 <img class="logo" src="/img/cards/<%= user.card.type %>.png"/>
                 <div class="name"><%= user.card.name %></div>
-                <div class="number">····<%= user.card.number %></div>
+                <div class="number"><%= user.card.number %></div>
             </div>
         <% } %>
         <div class="bottom">

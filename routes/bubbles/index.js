@@ -24,6 +24,7 @@ exports.purchase = function(req, res, next) {
             res.render("bubbles/purchase", {
                 title: bubble.name,
                 bubble: bubble,
+                parent: req.param("parent") || "",
                 user: req.session.user,
                 js: req.js.renderTags("bubbles"),
                 css: req.css.renderTags("bubbles")
