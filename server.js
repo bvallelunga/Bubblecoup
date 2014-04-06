@@ -32,7 +32,7 @@ app.configure(function() {
     app.use(require("./public").express);
 
     //Direct Assests
-    app.use("/favicons", express.static(__dirname + "/public/favicons"));
+    app.use("/favicon", express.static(__dirname + "/public/favicons"));
     app.use("/fonts", express.static(__dirname + "/public/fonts"));
     app.use("/img", express.static(__dirname + "/public/images"));
 
