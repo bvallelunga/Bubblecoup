@@ -1,7 +1,5 @@
 $(function() {
-    //HACK: Required twice (will find out why after hackathon)
-    $(".forms").hAlign().vAlign();
-    $(".forms").hAlign().vAlign();
+    $(".forms").vAlign().hAlign();
 
     $("form").submit(function(e) {
         e.preventDefault();

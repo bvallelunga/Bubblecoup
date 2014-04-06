@@ -51,3 +51,21 @@ exports.purchase = function(req, res, next) {
         }
     });
 }
+
+exports.voucher = function(req, res, next) {
+    req.models.bubbles.purchases.one({
+        pub_id: req.param("voucher")
+    }, { autoFetchLimit: 3 }, function(error, voucher) {
+        if(!error && voucher && !voucher.used) {
+            res.render("bubbles/voucher", {
+                title: voucher.bubble.name + " Voucher",
+                voucher: voucher,
+                user: req.session.user,
+                js: req.js.renderTags("bubbles"),
+                css: req.css.renderTags("bubbles")
+            });
+        } else {
+            res.redirect("/");
+        }
+    });
+}

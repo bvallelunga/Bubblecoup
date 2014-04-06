@@ -1,0 +1,23 @@
+<% include ../includes/start.html %>
+<div class="voucher">
+    <div class="header">
+        <img src="/img/logo.png">
+        <span>bubblecoup</span>
+    </div>
+    <div class="info">
+        <div class="instructions">
+            Please give this voucher to <strong><%= voucher.bubble.company.name %></strong>
+            when entering the restaurant.
+            <br><br>
+            <strong>Address</strong><br>
+            <%= voucher.bubble.company.name %><br>
+            <%=: voucher.bubble.company.location | capitalize %>
+        </div>
+        <img src="http://www.barcodelink.net/barcode.php?url=<%= host + "/redeem/%s/%s/%s".sprintf([
+            voucher.pub_id,
+            voucher.bubble.company.pub_id,
+            user.pub_id
+        ]) %>&size=600"
+    </div>
+</div>
+<% include ../includes/end.html %>

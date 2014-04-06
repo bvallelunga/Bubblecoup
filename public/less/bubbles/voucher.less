@@ -1,0 +1,37 @@
+@import '../compless/all';
+
+.voucher {
+    width: 400px;
+    border: dashed 3px #000;
+    padding: 3px;
+    .border-radius(3px);
+
+    .header {
+        padding: 10px 0;
+        font-size: 45px;
+        text-align: center;
+        font-family: "Balcony Angels";
+        background: #1880AC;
+        color: #fff;
+
+        img {
+            height: 30px;
+        }
+    }
+
+    .info {
+        .clearfix();
+
+        .instructions {
+            width: 180px;
+            margin: 15px 0 0 15px;
+            .float-left()
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            .float-right();
+        }
+    }
+}
