@@ -37,17 +37,21 @@ exports.index = function(req, res, next) {
                     function(next) {
                         if(req.param("l")) {
                             var location = req.param("l") .split(",");
-                            req.models.bubbles.one({
+                            req.models.companies.find({
                                 city: $.trim(location[0]).toLowerCase().replace(/ /g, "_")
-                            }, function(error, company) {
-                                if(!error && company) {
-                                    async.each(company.bubbles, function(bubble, move) {
-                                         if(bubbles_ids.indexOf(bubble.id) == -1) {
-                                             bubbles.push(bubble);
-                                             bubbles_ids.push(bubble.id);
-                                         }
+                            }, function(error, companies) {
+                                console.log(error, companies);
 
-                                         move();
+                                if(!error && companies) {
+                                    async.each(companies, function(company, move) {
+                                        async.each(company.bubbles, function(bubble, move) {
+                                             if(bubbles_ids.indexOf(bubble.id) == -1) {
+                                                 bubbles.push(bubble);
+                                                 bubbles_ids.push(bubble.id);
+                                             }
+
+                                             move();
+                                        }, move);
                                     }, next);
                                 } else {
                                     next();
