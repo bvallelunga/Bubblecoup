@@ -1,0 +1,116 @@
+@import '../compless/all';
+
+.sidebar {
+    width: 200px;
+    margin-top: 30px;
+    .float-left();
+
+    .filter {
+        background: darken(#fff, 3%);
+        margin-bottom: 30px;
+        overflow: hidden;
+        .border-radius(2px);
+
+        .header {
+            color: #fff;
+            background: #1880AC;
+            font-size: 14px;
+            padding: 5px 0;
+            text-align: center;
+            text-shadow: darken(#1880AC, 5%) 0px -1px 1px;
+        }
+
+        .list {
+            padding: 5px 10px;
+
+            a {
+                font-size: 14px;
+                display: block;
+                margin: 10px 0;
+                .ellipsis();
+
+                &.activated {
+                    color: darken(#1880AC, 10%);
+                }
+
+                &:hover {
+                    color: darken(#1880AC, 5%);
+
+                    &:active {
+                        color: darken(#1880AC, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.results {
+    width: 650px;
+    margin-top: 30px;
+    .float-right();
+
+    .bubble {
+        position: relative;
+        width: 200px;
+        height: 280px;
+        overflow: hidden;
+        margin: 0 25px 25px 0;
+        background: darken(#1880AC, 20%);
+        .float-left();
+        .border-radius(3px);
+
+        &:nth-child(3n+3) {
+          margin-right: 0;
+        }
+
+        &:hover {
+            .box-shadow(0 0 10px RGBA(24, 128, 172, 0.7));
+
+            &:active {
+                .box-shadow(0 0 10px RGBA(24, 128, 172, 1));
+            }
+        }
+
+        img {
+            width: 225px;
+            height: 225px;
+        }
+
+        .info {
+            width: 100%;
+            padding: 10px;
+            margin-top: -5px;
+            .box-sizing(border-box);
+
+            .name {
+                color: #fff;
+                font-size: 14px;
+                margin-bottom: 5px;
+                .ellipsis();
+            }
+
+            .discount {
+                font-size: 13px;
+                .clearfix();
+
+                .about {
+                    color: darken(#fff, 5%);
+                    .float-left();
+                }
+
+                .original {
+                    text-decoration: line-through;
+                    color: darken(#fff, 15%);
+                    margin-right: 5px;
+                    .float-right();
+                }
+
+                .discounted {
+                    color: #63BF1E;
+                    .float-right();
+                }
+            }
+        }
+    }
+}

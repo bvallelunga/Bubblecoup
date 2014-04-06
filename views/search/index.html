@@ -1,15 +1,38 @@
 <% include ../includes/start.html %>
 <% include ../includes/header.html %>
-<div class="sidebar">
-    <div class="filter">
-        <div class="header">Guides</div>
-        <div class="list">
-            <% guides.forEach(function(guide) { %>
-                <a href="/search/?g=<%= guide.slug %>">
-                    <%= guide.name %> (<%=: guide.bubbles.length | format %>)
-                </a>
-            <% }); %>
+<div class="container">
+    <div class="sidebar">
+        <div class="filter">
+            <div class="header">Food Guides</div>
+            <div class="list">
+                <% guides.forEach(function(guide) { %>
+                    <a  class="<%= (guide.slug == searched_guide) ? "activated" : "" %>"
+                        <% if(guide.slug != searched_guide) { %>
+                            href="/search/?g=<%= guide.slug %>&q=<%= search %>&l=<%=: location | urlencode %>"
+                        <% } else { %>
+                            href="/search/?q=<%= search %>&l=<%=: location | urlencode %>"
+                        <% } %>
+                    >
+                        <%= guide.name %> (<%=: guide.bubbles.length | format %>)
+                    </a>
+                <% }); %>
+            </div>
         </div>
+    </div>
+    <div class="results">
+        <% bubbles.forEach(function(bubble) { %>
+            <a class="bubble" href="/bubble/<%= bubble.pub_id %>/">
+                <img src="/img/food/<%= bubble.pub_id %>.png"/>
+                <div class="info">
+                    <div class="name"><%= bubble.name %></div>
+                    <div class="discount">
+                        <div class="about"><%= bubble.discount %>% off</div>
+                        <div class="discounted">$<%= bubble.original - (bubble.original * (bubble.discount/100)) %></div>
+                        <div class="original">$<%= bubble.original %></div>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
     </div>
 </div>
 <% include ../includes/footer.html %>

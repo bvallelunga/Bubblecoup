@@ -30,7 +30,7 @@
         }
     },
     "orm": {
-        "reset": true,
+        "reset": false,
         "preload": false,
         "sync": true,
         "debug": false,
