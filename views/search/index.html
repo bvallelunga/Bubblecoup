@@ -2,22 +2,48 @@
 <% include ../includes/header.html %>
 <div class="container">
     <div class="sidebar">
+        <% if(search) { %>
+            <div class="filter">
+                <div class="header">Search</div>
+                <div class="list">
+                    <a class="activated" href="/search/?&g=<%= searched_guide || "" %>&l=<%=: location | urlencode %>">
+                        <%= search %>
+                        <div class="icon <%= icons.close %>"></div>
+                    </a>
+                </div>
+            </div>
+        <% } %>
+        <% if(location) { %>
+            <div class="filter">
+                <div class="header">Location</div>
+                <div class="list">
+                    <a class="activated" href="/search/?q=<%= search %>&g=<%= searched_guide || "" %>">
+                        <%= location %>
+                        <div class="icon <%= icons.close %>"></div>
+                    </a>
+                </div>
+            </div>
+        <% } %>
         <div class="filter">
             <div class="header">Food Guides</div>
             <div class="list">
                 <% guides.forEach(function(guide) { %>
-                    <a  class="<%= (guide.slug == searched_guide) ? "activated" : "" %>"
-                        <% if(guide.slug != searched_guide) { %>
-                            href="/search/?g=<%= guide.slug %>&q=<%= search %>&l=<%=: location | urlencode %>"
-                        <% } else { %>
-                            href="/search/?q=<%= search %>&l=<%=: location | urlencode %>"
-                        <% } %>
-                    >
-                        <%= guide.name %>
-                        <% if(!guide.bubbles.empty) { %>
-                            (<%=: guide.bubbles.length | format %>)
-                        <% } %>
-                    </a>
+                    <% if(guide.slug != searched_guide) { %>
+                        <a href="/search/?g=<%= guide.slug %>&q=<%= search %>&l=<%=: location | urlencode %>">
+                            <%= guide.name %>
+                            <% if(!guide.bubbles.empty) { %>
+                                (<%=: guide.bubbles.length | format %>)
+                            <% } %>
+                        </a>
+                    <% } else { %>
+                        <a class="activated"  href="/search/?q=<%= search %>&l=<%=: location | urlencode %>">
+                            <%= guide.name %>
+                            <% if(!guide.bubbles.empty) { %>
+                                (<%=: guide.bubbles.length | format %>)
+                            <% } %>
+                            <div class="icon <%= icons.close %>"></div>
+                        </a>
+                    <% } %>
                 <% }); %>
             </div>
         </div>

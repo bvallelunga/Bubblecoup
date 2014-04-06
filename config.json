@@ -46,7 +46,8 @@
         "development": "sk_test_YPp6Iew2IQkSOOP1CXRIg741"
     },
     "icons": {
-        "search": "icon-search-2"
+        "search": "icon-search-2",
+        "close": "icon-plus-3"
     },
     "forever": {
         "uid": "bubblecoup",
