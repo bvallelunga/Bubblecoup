@@ -9,10 +9,58 @@
         </div>
         <div class="search">
             <form action="/search/" method="get">
-                <input name="q" type="text" class="input" placeholder="sake steakhouse..."/>
+                <input name="q" type="text" class="input" placeholder="sake steakhouse..." required="required" />
                 <input name="l" type="text" class="input" placeholder="location" value="<%= location.city %>" />
                 <input type="submit" class="button" value="Search" />
             </form>
+        </div>
+    </div>
+</div>
+<div class="guides">
+    <div class="container">
+        <div class="title">Food Guides</div>
+        <div class="subtitle">Not sure what kind of food you want? Try out guides!</div>
+        <div class="list">
+            <a href="/search/?t=american" class="guide">
+                <img src="/img/guides/american.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">All American</div>
+            </a>
+            <a href="/search/?t=critters-sea" class="guide">
+                <img src="/img/guides/critters-sea.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">Critters From The Sea</div>
+            </a>
+            <a href="/search/?t=hot-spicy" class="guide">
+                <img src="/img/guides/hot-spicy.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">Hot & Spicy</div>
+            </a>
+            <a href="/search/?t=south-american" class="guide">
+                <img src="/img/guides/south-american.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">South American</div>
+            </a>
+            <a href="/search/?t=drink" class="guide">
+                <img src="/img/guides/drink.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">Drink 'til You Drop</div>
+            </a>
+            <a href="/search/?t=asian" class="guide">
+                <img src="/img/guides/asian.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">Asian</div>
+            </a>
+            <a href="/search/?t=european" class="guide">
+                <img src="/img/guides/european.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">European</div>
+            </a>
+            <a href="/search/?t=mediterranean" class="guide">
+                <img src="/img/guides/mediterranean.jpg"/>
+                <div class="darkener"></div>
+                <div class="title">Mediterranean</div>
+            </a>
         </div>
     </div>
 </div>
