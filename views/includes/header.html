@@ -12,8 +12,13 @@
             </form>
         </div>
         <div class="links">
-            <a href="/signup/">sign up</a>
-            <a href="/signin/">sign in</a>
+            <% if(user) { %>
+                <a href="/logout/">sign out</a>
+                <a href="/account/">account</a>
+            <% } else { %>
+                <a href="/login/">sign in</a>
+                <a href="/register/">sign up</a>
+            <% } %>
         </div>
     </div>
 </div>

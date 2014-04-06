@@ -12,13 +12,7 @@ module.exports = function(app) {
                 route.route(app, routes);
             }
         });
-    });
 
-    app.all("*", function(req, res, next) {
-        res.render("404", {
-            title: "404",
-            js: req.js.renderTags(),
-            css: req.css.renderTags()
-        });
+        app.all("*", routes.error);
     });
 }
