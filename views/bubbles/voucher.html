@@ -25,6 +25,16 @@
     <div class="message" data-url="<%= share %>">
         <div>share this bubble with a friend for an additional 5% discount</div>
         <a target="_blank" href="<%= share %>"><%=: share | link:(40) %></a>
+        <span>or</span>
+        <span class="social" data-key="facebook" data-url="<%= share %>">
+            <span class="<%= icons.facebook %>"></span>
+        </span>
+        <span class="social" data-key="twitter" data-url="<%= share %>">
+            <span class="<%= icons.twitter %>"></span>
+        </span>
+        <span class="social" data-key="google" data-url="<%= share %>">
+            <span class="<%= icons.google %>"></span>
+        </span>
     </div>
 </div>
 <% include ../includes/end.html %>

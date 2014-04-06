@@ -47,7 +47,10 @@
     },
     "icons": {
         "search": "icon-search-2",
-        "close": "icon-plus-3"
+        "close": "icon-plus-3",
+        "facebook": "icon-facebook",
+        "twitter": "icon-twitter",
+        "google": "icon-google-plus"
     },
     "forever": {
         "uid": "bubblecoup",

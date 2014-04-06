@@ -49,8 +49,34 @@
         margin-bottom: 10px;
     }
 
+    & > span {
+        margin: 4px 6px 0 6px;
+        .float-left();
+
+        &.social {
+            margin-top: 0;
+            padding: 5px;
+            font-size: 16px;
+            line-height: 16px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            .border-radius(2px);
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.6);
+
+                &:active {
+                    background: rgba(0, 0, 0, 0.7);
+                }
+            }
+        }
+    }
+
     a {
+        margin-top: 4px;
         color: #1880AC;
+        .float-left();
 
         &:hover {
             text-decoration: underline;
