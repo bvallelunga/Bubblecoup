@@ -23,9 +23,25 @@ exports.init = function(app) {
         if(fs.statSync(path).isDirectory()) {
             $.each(fs.readdirSync(path), function(index, file) {
                 if(directory === "core") {
-                    js.addFile(path + "/" + file);
+                    if(file === "external.txt") {
+                        var links = fs.readFileSync(path + "/" + file, "utf-8").split("\n");
+
+                        $.each(links, function(index, link) {
+                            js.addUrl(link);
+                        });
+                    } else {
+                        js.addFile(path + "/" + file);
+                    }
                 } else {
-                    js.addFile(directory, path + "/" + file);
+                    if(file === "external.txt") {
+                        var links = fs.readFileSync(path + "/" + file, "utf-8").split("\n");
+
+                        $.each(links, function(index, link) {
+                            js.addUrl(directory, link);
+                        });
+                    } else {
+                        js.addFile(directory, path + "/" + file);
+                    }
                 }
             });
         }
