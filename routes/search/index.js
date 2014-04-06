@@ -4,7 +4,11 @@ exports.index = function(req, res, next) {
             req.models.guides.all().limit(8).run(callback);
         },
         bubbles: function(callback) {
-            if(req.param("g") == "all") {
+            if(
+                req.param("g") == "all" ||
+                (!req.param("q") && !req.param("l") && !req.param("g"))
+            ) {
+                req.params.g = "all";
                 req.models.bubbles.all(callback);
             } else {
                 bubbles = [];
