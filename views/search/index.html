@@ -7,7 +7,7 @@
                 <div class="header">Search</div>
                 <div class="list">
                     <a class="activated" href="/search/?&g=<%= searched_guide || "" %>&l=<%=: location | urlencode %>">
-                        <%= search %>
+                        <div><%= search %></div>
                         <div class="icon <%= icons.close %>"></div>
                     </a>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="header">Location</div>
                 <div class="list">
                     <a class="activated" href="/search/?q=<%= search %>&g=<%= searched_guide || "" %>">
-                        <%= location %>
+                        <div><%= location %></div>
                         <div class="icon <%= icons.close %>"></div>
                     </a>
                 </div>
@@ -30,17 +30,21 @@
                 <% guides.forEach(function(guide) { %>
                     <% if(guide.slug != searched_guide) { %>
                         <a href="/search/?g=<%= guide.slug %>&q=<%= search %>&l=<%=: location | urlencode %>">
-                            <%= guide.name %>
-                            <% if(!guide.bubbles.empty) { %>
-                                (<%=: guide.bubbles.length | format %>)
-                            <% } %>
+                            <div>
+                                <%= guide.name %>
+                                <% if(!guide.bubbles.empty) { %>
+                                    (<%=: guide.bubbles.length | format %>)
+                                <% } %>
+                            </div>
                         </a>
                     <% } else { %>
                         <a class="activated"  href="/search/?q=<%= search %>&l=<%=: location | urlencode %>">
-                            <%= guide.name %>
-                            <% if(!guide.bubbles.empty) { %>
-                                (<%=: guide.bubbles.length | format %>)
-                            <% } %>
+                            <div>
+                                <%= guide.name %>
+                                <% if(!guide.bubbles.empty) { %>
+                                    (<%=: guide.bubbles.length | format %>)
+                                <% } %>
+                            </div>
                             <div class="icon <%= icons.close %>"></div>
                         </a>
                     <% } %>
