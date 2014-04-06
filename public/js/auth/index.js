@@ -11,7 +11,7 @@ $(function() {
             if(response.success) {
                 window.location.href = response.next;
             } else {
-                form.find(".button").addClass("error").val(response.error_message);
+                form.find(".button").eq(0).addClass("error").val(response.error_message);
             }
         });
     });
