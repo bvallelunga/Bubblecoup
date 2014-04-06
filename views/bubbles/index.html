@@ -8,9 +8,9 @@
             <strong><%= site_delimeter %></strong>
             <%=: bubble.company.city | capitalize %>, <%=: bubble.company.state | capitalize %>
         </div>
-        <div class="description"><%=: bubble.description %></div>
+        <div class="description"><%= bubble.description %></div>
         <div class="image">
-            <img src="/img/food/<%=: bubble.pub_id %>_big.png"/>
+            <img src="/img/food/<%= bubble.pub_id %>_big.png"/>
         </div>
     </div>
     <div class="sidebar">

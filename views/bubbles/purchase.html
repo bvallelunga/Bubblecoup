@@ -1,0 +1,33 @@
+<% include ../includes/start.html %>
+<% include ../includes/header.html %>
+<div class="confirm">
+    <form action="/bubbles/<%= bubble.pub_id %>/purchase/">
+        <div class="image">
+            <img src="/img/food/<%= bubble.pub_id %>.png"/>
+            <div class="darkerner"></div>
+            <div class="name"><%= bubble.name %></div>
+            <div class="price">$<%= (bubble.original - (bubble.original * (bubble.discount/100))).toFixed(2) %></div>
+        </div>
+        <% if($.isEmptyObject(user.card)) { %>
+            <div class="new-card">
+                <img class="logo"/>
+                <input name="_csrf" type="hidden" value="<%= csrf %>"/>
+                <input class="input input-name" type="text" name="card[name]" placeholder="John Does" value="<%= user.name %>" required="required"/>
+                <input class="input input-card" type="text" name="card[number]" placeholder="DDDD DDDD DDDD" required="required"/>
+                <input class="input input-expiration" type="text" name="card[expr]" placeholder="MM / YYYY" required="required"/>
+                <input class="input input-cvc" type="text" name="card[cvc]" placeholder="CVC" required="required"/>
+            </div>
+        <% } else { %>
+            <div class="card">
+                <img class="logo" src="/img/cards/<%= user.card.type %>.png"/>
+                <div class="name"><%= user.card.name %></div>
+                <div class="number">····<%= user.card.number %></div>
+            </div>
+        <% } %>
+        <div class="bottom">
+            <input class="button" type="submit" value="Confirm Purchase"/>
+        </div>
+    </form>
+</div>
+<% include ../includes/footer.html %>
+<% include ../includes/end.html %>

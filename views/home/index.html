@@ -8,6 +8,7 @@
             Dine in over <%=: companies | format %>
             <%=: "resturant" | pluralize:(companies != 1) %> in
             <%=: cities | format %> <%=: "city" | pluralize:(cities != 1) %>.
+            Enjoy!
         </div>
         <div class="search">
             <form action="/search/" method="get">

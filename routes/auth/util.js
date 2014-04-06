@@ -1,14 +1,15 @@
 /* Checks */
-exports.restrictAccess = function(req, res, next) {
+exports.restrict = function(req, res, next) {
     if(req.session.user) {
         if(config.cookies.rememberme in req.cookies) {
-            next()
+            next();
         } else {
             req.models.users.get(req.session.user.id, function(error, user) {
                 if(!error && user) {
                     user.set_recovery(req, res);
+                    next();
                 } else {
-                    res.redirect("/login?next=" + req.url);
+                    res.redirect("/logout/");
                 }
             });
         }
@@ -21,13 +22,13 @@ exports.restrictAccess = function(req, res, next) {
                     user.set_recovery(req, res);
                     req.session.user = user;
                     req.session.save();
-                    res.redirect(req.param("next") || config.general.default);
+                    next();
                 } else {
-                    res.redirect("/login?next=" + req.url);
+                    res.redirect("/login/?next=" + req.url);
                 }
             });
         } else {
-            res.redirect("/login?next=" + req.url);
+            res.redirect("/login/?next=" + req.url);
         }
     }
 };

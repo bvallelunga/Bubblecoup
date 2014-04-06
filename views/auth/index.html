@@ -4,6 +4,8 @@
     <div class="form">
         <div class="header">Sign Up</div>
         <form action="/register/" autocomplete="off">
+            <input name="_csrf" type="hidden" value="<%= csrf %>"/>
+            <input name="next" type="hidden" value="<%= next %>"/>
             <input class="input" type="text" name="name"  placeholder="John Doe" required="required"/>
             <input class="input" type="text" name="email"  placeholder="john@doe.com" required="required"/>
             <input class="input" type="password" name="password" placeholder="password" required="required"/>
@@ -14,6 +16,8 @@
     <div class="form">
         <div class="header">Sign In</div>
         <form action="/login/" autocomplete="off">
+            <input name="_csrf" type="hidden" value="<%= csrf %>"/>
+            <input name="next" type="hidden" value="<%= next %>"/>
             <input class="input" type="text" name="email" placeholder="john@doe.com" required="required"/>
             <input class="input" type="password"name="password" placeholder="password" required="required"/>
             <input class="button" type="submit" value="Login"/>
