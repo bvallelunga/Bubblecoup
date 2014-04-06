@@ -3,7 +3,7 @@ module.exports = function(app, routes) {
     app.get('/register', routes.auth.index);
     app.get('/logout', routes.auth.util.logout);
 
-    app.post('/login', routes.auth.util.login);
-    app.post('/register', routes.auth.util.register);
+    app.post('/login', routes.auth.util.xhr, routes.auth.util.login);
+    app.post('/register', routes.auth.util.xhr, routes.auth.util.register);
 
 }

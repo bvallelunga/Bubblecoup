@@ -60,12 +60,51 @@ exports.voucher = function(req, res, next) {
             res.render("bubbles/voucher", {
                 title: voucher.bubble.name + " Voucher",
                 voucher: voucher,
-                user: req.session.user,
                 js: req.js.renderTags("bubbles"),
                 css: req.css.renderTags("bubbles")
             });
         } else {
             res.redirect("/");
+        }
+    });
+}
+
+exports.redeem = function(req, res, next) {
+    async.parallel({
+        user: function(callback) {
+            req.models.users.one({
+                pub_id: req.param("user")
+            }, callback);
+        },
+        voucher: function(callback) {
+            req.models.bubbles.purchases.one({
+                pub_id: req.param("voucher")
+            }, callback);
+        },
+        company: function(callback) {
+            req.models.companies.exists({
+                pub_id: req.param("company")
+            }, callback);
+        }
+    }, function(error, data) {
+        if(!error && data.user && data.company && data.voucher && !data.voucher.used) {
+            data.voucher.save({
+                used: true
+            }, function(error) {
+                if(!error) {
+                    res.json({ success: true });
+                } else {
+                    res.json({
+                        success: false,
+                        error_message: "Failed to Redeem Voucher"
+                    });
+                }
+            });
+        } else {
+            res.json({
+                success: false,
+                error_message: "Failed to Redeem Voucher"
+            });
         }
     });
 }

@@ -13,7 +13,7 @@
             <%= voucher.bubble.company.name %><br>
             <%=: voucher.bubble.company.location | capitalize %>
         </div>
-        <img src="http://www.barcodelink.net/barcode.php?url=<%= host + "/redeem/%s/%s/%s".sprintf([
+        <img src="http://www.barcodelink.net/barcode.php?url=<%= host + "/redeem/%s/%s/%s/".sprintf([
             voucher.pub_id,
             voucher.bubble.company.pub_id,
             user.pub_id
