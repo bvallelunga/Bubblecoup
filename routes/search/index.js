@@ -42,14 +42,18 @@ exports.index = function(req, res, next) {
                             }, function(error, companies) {
                                 if(!error && companies) {
                                     async.each(companies, function(company, move) {
-                                        async.each(company.bubbles, function(bubble, move) {
-                                             if(bubbles_ids.indexOf(bubble.id) == -1) {
-                                                 bubbles.push(bubble);
-                                                 bubbles_ids.push(bubble.id);
-                                             }
+                                        if(company.bubbles) {
+                                            async.each(company.bubbles, function(bubble, move) {
+                                                 if(bubbles_ids.indexOf(bubble.id) == -1) {
+                                                     bubbles.push(bubble);
+                                                     bubbles_ids.push(bubble.id);
+                                                 }
 
-                                             move();
-                                        }, move);
+                                                 move();
+                                            }, move);
+                                        } else {
+                                            move();
+                                        }
                                     }, next);
                                 } else {
                                     next();

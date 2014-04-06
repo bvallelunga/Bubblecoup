@@ -36,6 +36,7 @@ module.exports = function(req, res, next) {
     res.locals.csrf = (req.csrfToken) ? req.csrfToken() : "";
     res.locals.production = config.general.production;
     res.locals.host = req.session.server;
+    res.locals.title = "";
     res.locals.site_title = config.general.company;
     res.locals.site_delimeter = config.general.delimeter.web;
     res.locals.description = config.general.description.join("");

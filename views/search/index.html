@@ -13,7 +13,10 @@
                             href="/search/?q=<%= search %>&l=<%=: location | urlencode %>"
                         <% } %>
                     >
-                        <%= guide.name %> (<%=: guide.bubbles.length | format %>)
+                        <%= guide.name %>
+                        <% if(!guide.bubbles.empty) { %>
+                            (<%=: guide.bubbles.length | format %>)
+                        <% } %>
                     </a>
                 <% }); %>
             </div>
