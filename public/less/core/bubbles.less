@@ -1,0 +1,136 @@
+@import '../compless/all';
+
+.bubbles-background {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 25%;
+}
+
+.bubble-container {
+	position: absolute;
+	bottom: 0;
+	opacity: 0;
+    .animation(bubblerise 4s ease-in 0s normal infinite);
+
+    @-webkit-keyframes bubblerise {
+		0% {
+    		bottom: 0;
+    		opacity: 0;
+    	}
+    	5% {
+    		bottom: 0;
+            opacity: 1;
+    	}
+    	99% {
+    		opacity: 1;
+    	}
+    	100% {
+    		bottom: 100%;
+    		opacity: 0;
+    	}
+	}
+
+	@-moz-keyframes bubblerise {
+		0% {
+            bottom: 0;
+    		opacity: 0;
+    	}
+    	5% {
+    		bottom: 0;
+            opacity: 1;
+    	}
+    	99% {
+    		opacity: 1;
+    	}
+    	100% {
+    		bottom: 100%;
+    		opacity: 0;
+    	}
+	}
+
+	@-o-keyframes bubblerise {
+		0% {
+            bottom: 0;
+    		opacity: 0;
+    	}
+    	5% {
+    		bottom: 0;
+            opacity: 1;
+    	}
+    	99% {
+    		opacity: 1;
+    	}
+    	100% {
+    		bottom: 100%;
+    		opacity: 0;
+    	}
+	}
+
+	@keyframes bubblerise {
+		0% {
+            bottom: 0;
+    		opacity: 0;
+    	}
+    	5% {
+    		bottom: 0;
+            opacity: 1;
+    	}
+    	99% {
+    		opacity: 1;
+    	}
+    	100% {
+    		bottom: 100%;
+    		opacity: 0;
+    	}
+    }
+
+    & > .bubble {
+    	width: 6px;
+    	height: 6px;
+    	margin: 0 auto;
+    	border: 1px solid RGBA(25, 162, 235, 0.5);
+    	background: RGBA(25, 162, 235, 0.25);
+        .border-radius(10px);
+        .animation(bubblewobble 4s ease-in 0s normal infinite);
+        .box-shadow(inset 10px 10px 100px #fff);
+
+        @-webkit-keyframes bubblewobble {
+    		0% {
+    		margin-left: 0;
+        	}
+        	50% {
+        		margin-left: 2px;
+        	}
+    	}
+
+    	@-moz-keyframes bubblewobble {
+    		0% {
+    		margin-left: 0;
+        	}
+        	50% {
+        		margin-left: 2px;
+        	}
+    	}
+
+    	@-o-keyframes bubblewobble {
+    		0% {
+    		margin-left: 0;
+        	}
+        	50% {
+        		margin-left: 2px;
+        	}
+    	}
+
+    	@keyframes bubblewobble {
+    		0% {
+    		margin-left: 0;
+        	}
+        	50% {
+        		margin-left: 2px;
+        	}
+        }
+    }
+}
