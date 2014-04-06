@@ -1,3 +1,5 @@
+var backdrop_themes = {};
+
 module.exports = function(req, res, next) {
     //Set Server Root For Non Express Calls
     req.session.server = req.protocol + "://" + req.host;
@@ -13,6 +15,45 @@ module.exports = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', req.host);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+
+    //Backdrop
+    if(!req.xhr) {
+        req.backdrop = function(theme) {
+            if(!theme) {
+                if(req.session.organization.theme) {
+                    theme = req.session.organization.theme;
+                } else if(req.location.city) {
+                    theme = req.location.city.toLowerCase().replace(/ /g, '_');
+                } else {
+                    theme = config.general.backdrop;
+                }
+            }
+
+            if($.isEmptyObject(backdrop_themes)) {
+                var themes = __dirname + "/../../public/img/backgrounds/";
+
+                $.each(fs.readdirSync(themes), function(index, theme) {
+                    var theme_path = themes + "/" + theme;
+                    var stats = fs.lstatSync(theme_path);
+
+                    if(stats.isDirectory() || stats.isSymbolicLink()) {
+                        var files = fs.readdirSync(theme_path);
+
+                        if(!files.empty) {
+                            backdrop_themes[theme] = files;
+                        }
+                    }
+                });
+            }
+
+            if(theme in backdrop_themes) {
+                var file = backdrop_themes[theme][Math.floor((Math.random() * backdrop_themes[theme].length))];
+                return "background-image: url('/img/backgrounds/" + theme + "/" + file + "');".replace(/ /g, '');
+            } else {
+                return req.backdrop(config.general.backdrop);
+            }
+        }
+    }
 
     //Device Info
     var device = req.device.type.toLowerCase();
