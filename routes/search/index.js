@@ -92,8 +92,8 @@ exports.index = function(req, res, next) {
         }
     }, function(error, data) {
        res.render("search/index", {
-            title: req.param("q"),
-            search: req.param("q"),
+            title: req.param("q") || "Search",
+            search: req.param("q") || "",
             guides: data.guides || [],
             bubbles: data.bubbles,
             location: req.param("l") || "",
