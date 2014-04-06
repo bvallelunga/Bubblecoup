@@ -9,7 +9,7 @@
         </div>
         <div class="search">
             <form action="/search/" method="get">
-                <input name="q" type="text" class="input" placeholder="sake steakhouse..." required="required" />
+                <input name="q" type="text" class="input" placeholder="hot and spicy lasagna..." required="required" />
                 <input name="l" type="text" class="input google-search" placeholder="your location..." value="<%= location.city %>" />
                 <input type="submit" class="button" value="Search" />
             </form>
@@ -21,46 +21,13 @@
         <div class="title">Food Guides</div>
         <div class="subtitle">Not sure what kind of food you want? Try out guides!</div>
         <div class="list">
-            <a href="/search/?t=american" class="guide">
-                <img src="/img/guides/american.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">All American</div>
-            </a>
-            <a href="/search/?t=seacritters" class="guide">
-                <img src="/img/guides/seacritters.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">Critters From The Sea</div>
-            </a>
-            <a href="/search/?t=hotnspicy" class="guide">
-                <img src="/img/guides/hotnspicy.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">Hot n' Spicy</div>
-            </a>
-            <a href="/search/?t=southamericano" class="guide">
-                <img src="/img/guides/southamericano.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">South American</div>
-            </a>
-            <a href="/search/?t=drink" class="guide">
-                <img src="/img/guides/drink.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">Drink 'til You Drop</div>
-            </a>
-            <a href="/search/?t=asian" class="guide">
-                <img src="/img/guides/asian.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">Asian</div>
-            </a>
-            <a href="/search/?t=european" class="guide">
-                <img src="/img/guides/european.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">European</div>
-            </a>
-            <a href="/search/?t=mediterranean" class="guide">
-                <img src="/img/guides/mediterranean.jpg"/>
-                <div class="darkener"></div>
-                <div class="title">Mediterranean</div>
-            </a>
+            <% guides.forEach(function(guide) { %>
+                <a href="/search/?g=<%= guide.slug %>" class="guide">
+                    <img src="/img/guides/<%= guide.slug %>.jpg"/>
+                    <div class="darkener"></div>
+                    <div class="title"><%= guide.name %></div>
+                </a>
+            <% }); %>
         </div>
     </div>
 </div>

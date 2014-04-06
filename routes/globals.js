@@ -48,6 +48,7 @@ module.exports = function(req, res, next) {
     res.locals.location = req.location;
     res.locals.random = "?rand=" + config.random;
     res.locals.type = "website";
+    res.locals.search = req.param("q") || "";
     res.locals.logos = {
         "logo":  res.locals.host + "/img/logo.png",
         "graph": res.locals.host + "/favicon/196.png",
