@@ -40,8 +40,6 @@ exports.index = function(req, res, next) {
                             req.models.companies.find({
                                 city: $.trim(location[0]).toLowerCase().replace(/ /g, "_")
                             }, function(error, companies) {
-                                console.log(error, companies);
-
                                 if(!error && companies) {
                                     async.each(companies, function(company, move) {
                                         async.each(company.bubbles, function(bubble, move) {
