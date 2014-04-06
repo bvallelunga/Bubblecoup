@@ -45,7 +45,7 @@
         "development": ""
     },
     "icons": {
-
+        "search": "icon-search-2"
     },
     "forever": {
         "uid": "bubblecoup",

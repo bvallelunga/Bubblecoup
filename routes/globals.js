@@ -1,3 +1,4 @@
+var fs = require("fs");
 var backdrop_themes = {};
 
 module.exports = function(req, res, next) {
@@ -16,13 +17,55 @@ module.exports = function(req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
+    //Device Info
+    var device = req.device.type.toLowerCase();
+    req.mobile = ["phone", "tablet"].indexOf(device) != -1;
+    req.robot = (device == "bot");
+    req.tv = (device == "tv");
+    req.location = lib.geoip(req.ip) || {
+        city: null,
+        region: null,
+        country: null,
+        ll: [null, null]
+    };
+
+    //Session Save
+    req.session.save();
+
+    //Locals
+    res.locals.csrf = (req.csrfToken) ? req.csrfToken() : "";
+    res.locals.production = config.general.production;
+    res.locals.host = req.session.server;
+    res.locals.site_title = config.general.company;
+    res.locals.site_delimeter = config.general.delimeter.web;
+    res.locals.description = config.general.description.join("");
+    res.locals.company = config.general.company;
+    res.locals.logo = config.general.logo;
+    res.locals.config = {};
+    res.locals.icons = config.icons;
+    res.locals.user = req.session.user;
+    res.locals.title_first = true;
+    res.locals.location = req.location;
+    res.locals.random = "?rand=" + config.random;
+    res.locals.type = "website";
+    res.locals.logos = {
+        "logo":  res.locals.host + "/img/logo.png",
+        "graph": res.locals.host + "/favicon/196.png",
+        "1000":  res.locals.host + "/favicon/1000.png",
+        "500":   res.locals.host + "/favicon/500.png",
+        "196":   res.locals.host + "/favicon/196.png",
+        "160":   res.locals.host + "/favicon/160.png",
+        "114":   res.locals.host + "/favicon/114.png",
+        "72":    res.locals.host + "/favicon/72.png",
+        "57":    res.locals.host + "/favicon/57.png",
+        "32":    res.locals.host + "/favicon/32.png"
+    };
+
     //Backdrop
     if(!req.xhr) {
         req.backdrop = function(theme) {
             if(!theme) {
-                if(req.session.organization.theme) {
-                    theme = req.session.organization.theme;
-                } else if(req.location.city) {
+                if(req.location.city) {
                     theme = req.location.city.toLowerCase().replace(/ /g, '_');
                 } else {
                     theme = config.general.backdrop;
@@ -30,7 +73,7 @@ module.exports = function(req, res, next) {
             }
 
             if($.isEmptyObject(backdrop_themes)) {
-                var themes = __dirname + "/../../public/img/backgrounds/";
+                var themes = __dirname + "/../public/images/backgrounds/";
 
                 $.each(fs.readdirSync(themes), function(index, theme) {
                     var theme_path = themes + "/" + theme;
@@ -54,43 +97,6 @@ module.exports = function(req, res, next) {
             }
         }
     }
-
-    //Device Info
-    var device = req.device.type.toLowerCase();
-    req.mobile = ["phone", "tablet"].indexOf(device) != -1;
-    req.robot = (device == "bot");
-    req.tv = (device == "tv");
-
-    //Session Save
-    req.session.save();
-
-    //Locals
-    res.locals.csrf = (req.csrfToken) ? req.csrfToken() : "";
-    res.locals.production = config.general.production;
-    res.locals.host = req.session.server;
-    res.locals.site_title = config.general.company;
-    res.locals.site_delimeter = config.general.delimeter.web;
-    res.locals.description = config.general.description.join("");
-    res.locals.company = config.general.company;
-    res.locals.logo = config.general.logo;
-    res.locals.config = {};
-    res.locals.icons = config.icons;
-    res.locals.user = req.session.user;
-    res.locals.title_first = true;
-    res.locals.random = "?rand=" + config.random;
-    res.locals.type = "website";
-    res.locals.logos = {
-        "logo":  res.locals.host + "/img/logo.png",
-        "graph": res.locals.host + "/favicon/196.png",
-        "1000":  res.locals.host + "/favicon/1000.png",
-        "500":   res.locals.host + "/favicon/500.png",
-        "196":   res.locals.host + "/favicon/196.png",
-        "160":   res.locals.host + "/favicon/160.png",
-        "114":   res.locals.host + "/favicon/114.png",
-        "72":    res.locals.host + "/favicon/72.png",
-        "57":    res.locals.host + "/favicon/57.png",
-        "32":    res.locals.host + "/favicon/32.png"
-    };
 
     //Redirect
     if(req.subdomains.indexOf('www') === -1) {

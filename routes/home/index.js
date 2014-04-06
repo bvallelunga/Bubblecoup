@@ -4,6 +4,7 @@ exports.index = function(req, res, next) {
         title_first: false,
         user: req.session.user,
         js: req.js.renderTags("home"),
-        css: req.css.renderTags("home")
+        css: req.css.renderTags("home"),
+        backdrop: req.backdrop()
     });
 }

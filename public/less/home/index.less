@@ -1,3 +1,19 @@
-body {
-    background: #fff
+@import '../compless/all';
+
+.backdrop {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .darkener {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        .linear-gradient(0deg, rgba(0, 0, 0, .80), rgba(0, 0, 0, .15));
+    }
 }
