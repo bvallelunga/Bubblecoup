@@ -1,4 +1,19 @@
 <% include ../includes/start.html %>
 <% include ../includes/header.html %>
-
+<div class="hero" style="<%= backdrop %>">
+    <div class="darkener"></div>
+    <div class="container">
+        <div class="title">Explore your bubble</div>
+        <div class="subtitle">
+            Dine in over 50 restaurants and 400 cities.
+        </div>
+        <div class="search">
+            <form action="/search/" method="get">
+                <input name="q" type="text" class="input" placeholder="sake steakhouse..."/>
+                <input name="l" type="text" class="input" placeholder="location" value="<%= location.city %>" />
+                <input type="submit" class="button" value="Search" />
+            </form>
+        </div>
+    </div>
+</div>
 <% include ../includes/end.html %>

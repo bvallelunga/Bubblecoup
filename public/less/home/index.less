@@ -1,19 +1,83 @@
 @import '../compless/all';
 
-.backdrop {
-    position: absolute;
-    z-index: 0;
+.hero {
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 500px;
+    overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 
     .darkener {
-        position: fixed;
+        position: absolute;
+        z-index: 1;
         width: 100%;
         height: 100%;
         z-index: 1;
-        .linear-gradient(0deg, rgba(0, 0, 0, .80), rgba(0, 0, 0, .15));
+        .linear-gradient(0deg, rgba(0, 0, 0, .70), rgba(0, 0, 0, .4));
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        margin-top: 140px;
+
+        .title,
+        .subtitle {
+            color: #fff;
+            font-family: Shift, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 48px;
+            font-weight: lighter;
+            text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 1px;
+
+            &.subtitle {
+                margin-top: 5px;
+                font-size: 20px;
+            }
+        }
+
+        .search {
+            display: inline-block;
+            margin-top: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            .border-radius(3px);
+            .box-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+
+            .input {
+                background: #fff;
+                color: #333;
+                padding: 10px;
+                font-size: 16px;
+                margin-right: 5px;
+                .border-radius(2px);
+
+                &:first-child {
+                    width: 325px;
+                }
+
+                &:nth-child(2) {
+                    width: 150px;
+                }
+            }
+
+            .button {
+                color: #fff;
+                padding: 10px 15px;
+                font-size: 16px;
+                cursor: pointer;
+                .border-radius(2px);
+                .linear-gradient(0deg, darken(#36B1F3, 10%), #36B1F3);
+
+                &:hover {
+                    .linear-gradient(0deg, darken(#36B1F3, 15%), #36B1F3);
+
+                    &:active {
+                        .linear-gradient(0deg, darken(#36B1F3, 20%), #36B1F3);
+                    }
+                }
+            }
+        }
     }
 }
