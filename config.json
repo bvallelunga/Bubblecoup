@@ -10,7 +10,7 @@
         "description": [
             "Offering a more efficient and fair resource for consumers and local businesses alike."
         ],
-        "backdrop": "oceans",
+        "backdrop": "santa_cruz",
         "default": "/"
     },
     "development": {
