@@ -1,6 +1,6 @@
 {
     "general": {
-        "production": false,
+        "production": true,
         "company": "BubbleCoup",
         "logo": "bubblecoup",
         "delimeter": {
@@ -42,7 +42,7 @@
         "password": "bubblecoup"
     },
     "stripe": {
-        "production": "sk_live_EzlWg4LFouolfg7RGNj0dHaI",
+        "production": "sk_test_YPp6Iew2IQkSOOP1CXRIg741",
         "development": "sk_test_YPp6Iew2IQkSOOP1CXRIg741"
     },
     "icons": {

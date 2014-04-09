@@ -11,10 +11,10 @@ var fs = require("fs");
 var js = piler.createJSManager({ urlRoot: "/js/" });
 var css = piler.createCSSManager({ urlRoot: "/css/" });
 
-exports.init = function(app) {
+exports.init = function(app, srv) {
     //Bind to App
-    js.bind(app);
-    css.bind(app);
+    js.bind(app, srv);
+    css.bind(app, srv);
 
     //Auto Discover JS
     $.each(fs.readdirSync(__dirname + "/js/"), function(index, directory) {

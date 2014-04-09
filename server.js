@@ -3,6 +3,7 @@ var express    = require("express");
 var device     = require("express-device");
 var slashes    = require("connect-slashes");
 var app        = express();
+var srv        = require('http').createServer(app);
 var ejs        = require("ejs");
 var RedisStore = require("connect-redis")(express);
 
@@ -28,7 +29,7 @@ app.configure(function() {
     app.set("x-powered-by", false);
 
     //Piler Assests
-    require("./public").init(app);
+    require("./public").init(app, srv);
     app.use(require("./public").express);
 
     //Direct Assests
@@ -84,4 +85,4 @@ require("./routes")(app);
 
 /* Start Router */
 app.use(app.router);
-app.listen(80);
+srv.listen(80);
