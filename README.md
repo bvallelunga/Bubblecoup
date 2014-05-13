@@ -3,5 +3,3 @@ Bubblecoup is the project I used to compete in the University of California, San
 Placed: 1st
 
 Time Taken to Code: 18 hours
-
-Number of Coders on Team: 1 (Me)
