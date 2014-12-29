@@ -1,5 +1,7 @@
-Bubblecoup is the project I used to compete in the University of California, Santa Cruz hackathon.
+**Hackathon:** Hack UCSC
 
-Placed: 1st
+**Placed:** 1st
 
-Time Taken to Code: 18 hours
+**Coding Time:** 18 hours
+
+**Description:** A Groupon competitor with a social twist! After purchasing a coupon, you can share the voucher with a friend to get an additional discount.
